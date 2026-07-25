@@ -42,7 +42,7 @@ export default function SignInPage() {
       {message && <p style={{ marginTop: 12 }}>{message}</p>}
       <hr style={{ margin: '24px 0' }} />
       <p>
-        Not: Supabase proje ayarlarında SMTP yapılandırması yapıldıysa e-posta alırsın. Yerelde test etmek için Supabase Admin > Auth > Templates bölümünden "Enable email" ya da test kurulumunu kontrol et.
+        Not: Eğer e-posta gelmiyorsa Supabase dashboard'undan SMTP ayarlarını kontrol edin.
       </p>
     </div>
   )
