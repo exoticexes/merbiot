@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #0f172a;
+  color: #e6eef8;
+}
+
+a { color: inherit; }
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 28px;
+}
+
+.card {
+  background: rgba(255,255,255,0.04);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.brand {
+  font-weight:700;
+  font-size:20px;
+}
+
+.cta {
+  background:#ff3b30;
+  color:#fff;
+  padding:10px 14px;
+  border-radius:8px;
+  text-decoration:none;
+}
+
+.profile-links a {
+  display:block;
+  margin:10px 0;
+  padding:12px 14px;
+  background:#111827;
+  color:#fff;
+  border-radius:10px;
+  text-decoration:none;
+}
+
+.center {
+  text-align:center;
+}
+
+.small-muted { color:#9aa4b2; font-size:14px }

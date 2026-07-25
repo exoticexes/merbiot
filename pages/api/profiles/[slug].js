@@ -1,9 +1,10 @@
-// Simple API stub to return a profile by slug
+import { supabase } from '../../../lib/supabaseClient'
+
 export default async function handler(req, res) {
   const { slug } = req.query
   if (!slug) return res.status(400).json({ error: 'Missing slug' })
 
-  // TODO: Replace with real DB lookup (Postgres / Supabase / Prisma)
+  // Example stub
   if (slug === 'example') {
     return res.status(200).json({
       slug: 'example',
@@ -26,6 +27,46 @@ export default async function handler(req, res) {
     })
   }
 
-  // Default: not found
-  return res.status(404).json({ error: 'Profile not found' })
+  try {
+    // Fetch profile from Supabase by slug
+    const { data: profileData, error: profileError } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('slug', slug)
+      .limit(1)
+      .single()
+
+    if (profileError || !profileData) {
+      return res.status(404).json({ error: 'Profile not found' })
+    }
+
+    const profile = profileData
+
+    const { data: linksData, error: linksError } = await supabase
+      .from('links')
+      .select('*')
+      .eq('profile_id', profile.id)
+      .order('ordering', { ascending: false })
+
+    if (linksError) {
+      console.error('Links fetch error', linksError)
+    }
+
+    // Map DB fields to API shape
+    const response = {
+      slug: profile.slug,
+      title: profile.title,
+      bio: profile.bio,
+      avatar_url: profile.avatar_url,
+      bg_image_url: profile.bg_image_url,
+      theme: profile.theme || {},
+      links: (linksData || []).map(l => ({ id: l.id, title: l.title, url: l.url })),
+      showMerbiotCredit: profile.show_merbiot_credit ?? true
+    }
+
+    return res.status(200).json(response)
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ error: 'Server error' })
+  }
 }
