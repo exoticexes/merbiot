@@ -1,0 +1,6 @@
+# Ignore node_modules and env
+node_modules
+.next
+.env.local
+.env
+.DS_Store

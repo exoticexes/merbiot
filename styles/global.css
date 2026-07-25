@@ -1,0 +1,8 @@
+/* Global styles for merbiot MVP */
+:root{
+  --bg: #0b1220;
+  --muted: #9aa4b2;
+}
+html,body,#__next{height:100%;}
+body{margin:0;background:var(--bg);font-family:Inter, system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial;color:#e6eef8}
+a{color:inherit}

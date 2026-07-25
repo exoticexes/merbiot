@@ -1,0 +1,4 @@
+/* Image shape utilities */
+.avatar-square { width:120px; height:120px; object-fit:cover; }
+.avatar-round { border-radius:50%; width:120px; height:120px; object-fit:cover; }
+.avatar-triangle { width:120px; height:120px; object-fit:cover; clip-path:polygon(50% 0, 0% 100%, 100% 100%); }
